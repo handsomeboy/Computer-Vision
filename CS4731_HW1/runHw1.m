@@ -24,7 +24,7 @@ runTests(varargin, fun_handles);
 function honesty()
 % Type your full name and uni (both in string) to state your agreement 
 % to the Code of Academic Integrity.
-signAcademicHonestyPolicy('Peter Parker', 'pp1917');
+signAcademicHonestyPolicy('Emily Schultz', 'ess2183');
 
 %%
 function walkthrough1()
