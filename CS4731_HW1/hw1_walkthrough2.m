@@ -3,7 +3,7 @@
 % -------------------------------------------------------------------------
 
 % Load the image "Vincent_van_Gogh.png" into memory
-% img = imread(???);
+img = imread('Vincent_van_Gogh.png');
 
 % Note the image is of the type uint8, 
 % and the maximum pixel value of the image is 255.
@@ -32,8 +32,11 @@ red_image = zeros(size(img)); red_image(:, :, 1) = red_channel; figure, imshow(r
 % Similarly extract green_channel and blue_channel and create green_image
 % and blue_image
 
-%green_image = ???;
-%blue_image = ???;
+green_channel = img(:, :, 2); figure, imshow(green_channel);
+green_image = zeros(size(img)); green_image(:, :, 2) = green_channel; figure, imshow(green_image);
+
+blue_channel = img(:, :, 3); figure, imshow(blue_channel);
+blue_image = zeros(size(img)); blue_image(:, :, 3) = blue_channel; figure, imshow(blue_image);
 
 % Create a 1 x 4 image collage in the following arrangement
 % 
@@ -46,9 +49,8 @@ imshow(collage_1x2);
 % original image | red channel
 % green channel  | blue channel
 
-%collage_2x2 = ???
-% imshow(collage_2x2);
+collage_2x2 = [img, red_image; green_image, blue_image];
+imshow(collage_2x2);
 
 % Save the collage as collage.png
-% imwrite(???, ???);
-
+imwrite(collage_2x2, 'collage.png');
