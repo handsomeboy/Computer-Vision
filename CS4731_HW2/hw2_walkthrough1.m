@@ -27,7 +27,7 @@ saveas(fh1, 'binary_coins.png');
 fh2 = figure;
 
 % Specify the number of dilations/erosions
-k = 3;
+k = 4;
 
 processed_img = bwmorph(bw_img, 'dilate', k);
 subplot(1, 2, 1);
