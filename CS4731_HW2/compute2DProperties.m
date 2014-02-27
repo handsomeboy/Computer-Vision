@@ -39,17 +39,20 @@ for label = 1:max(labeled_img(:))
     E_two = a*sin(-theta).^2 - b*sin(-theta)*cos(-theta) + c*cos(-theta).^2;
     
     % roundedness
-    if E_one < E_two
+    %if E_one < E_two
         round = E_one/E_two;
         E_min = E_one;
-    else
-        round = E_two/E_one;
-        E_min = E_one;
-        deg_theta = -deg_theta;
-    end;
+%     else
+%         round = E_two/E_one;
+%         E_min = E_one;
+%         deg_theta = -deg_theta;
+%     end;
+    
+    % compute Euler Number
+    e_num = bweuler(bin_img);
     
     % update properties
-    prop_vec = [prop_vec; E_min; deg_theta; round];
+    prop_vec = [prop_vec; E_min; deg_theta; round; e_num];
     
     % add this labels' properties to the database
     prop_db = [prop_db prop_vec];
