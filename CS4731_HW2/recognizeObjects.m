@@ -1,8 +1,8 @@
 function output_img = recognizeObjects(orig_img, labeled_img, obj_db)
 matched_labels = [];
 
-round_thres = 0.22; 
-emin_thres = 1000000;
+round_thres = 0.03; 
+%emin_thres = 1000000;
 
 [img_db, out_img] = compute2DProperties(orig_img, labeled_img);
 
@@ -30,16 +30,11 @@ for label = 1:size(img_db, 2)
         if round_diff > round_thres
              continue
         end
-        % within threshold for Emin
-        emin_diff = abs(obj_emin - item_emin);
-        if emin_diff > emin_thres
-            continue
-        end
         
         disp('MATCH');
         disp(label);
         disp(item);
-        disp(emin_diff);
+        %disp(emin_diff);
         disp(round_diff);
         matched_labels = [matched_labels; label];
         continue

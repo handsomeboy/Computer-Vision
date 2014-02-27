@@ -117,9 +117,8 @@ function challenge2a()
 img_list = {'hough_1', 'hough_2', 'hough_3'};
 for i = 1:length(img_list)
     img = imread([img_list{i} '.png']);
-    %edge_img = edge(??);
+    edge_img = edge(img, 'canny', 0.12);
     
-        
     % Note: The output from edge is an image of logical type.
     % Here we cast it to double before saving it.
     imwrite(im2double(edge_img), ['edge_' img_list{i} '.png']);
@@ -128,9 +127,10 @@ end
 %%
 function challenge2b()
 img_list = {'hough_1', 'hough_2', 'hough_3'};
+% Quantize parameter space
+rho_num_bins = 50;
+theta_num_bins = 36;
 
-% rho_num_bins = ??;
-% theta_num_bins = ??;
 for i = 1:length(img_list)
     img = imread(['edge_' img_list{i} '.png']);
     hough_accumulator = generateHoughAccumulator(img,...

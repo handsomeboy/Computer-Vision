@@ -36,7 +36,8 @@ for label = 1:max(labeled_img(:))
     
     % E moment of inertia (min and max)
     E_one = a*sin(theta).^2  - b*sin(theta)*cos(theta)   + c*cos(theta).^2;
-    E_two = a*sin(-theta).^2 - b*sin(-theta)*cos(-theta) + c*cos(-theta).^2;
+    theta_2 = theta + (pi/2);
+    E_two = a*sin(theta_2).^2 - b*sin(theta_2)*cos(theta_2) + c*cos(theta_2).^2;
     
     % roundedness
     %if E_one < E_two

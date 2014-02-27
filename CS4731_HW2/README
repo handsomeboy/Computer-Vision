@@ -10,4 +10,18 @@ Challenge 1b:
 I decided to add a 7th item to my object database - the Euler number of the object. I thought this would be helpful since the objects have varying numbers of holes in them, so that would be a quick way to weed out non-matches at first.
 
 Challenge 1c:
-(Explain criteria/thresholds)
+I required that objects have the same Euler number.
+I used a threshold of 0.03 as the maximum acceptable difference between the roundness of the two objects to still be matched together. 
+
+This worked pretty well for the most part, although in challenge 1c2, the knife and fork are (incorrectly) matched with the spoon, for obvious reasons. This is one of the limitations of this type of matching system.
+
+Challenge 2b:
+(voting scheme/why)
+I decided to try each point that was an edge (edges determined in part 2a), then for each point I would try theta in [0,180) (stepping by the size of my theta_num_bins) and compute rho based on that theta and (x,y) point (since each point because a sinusoid in Hough-space). I chose to transform my rho's (which were positive and negative) into positive values (to store, because of matlab's shortcomings) and index the theta, rho bin by one. Then I scaled to be between 0 and 255. I tried several bin numbers before resting on my final values.
+
+Challenge 2c:
+(method for peaks)
+I decided to use a standard threshold of > 
+
+Challenge 2d:
+(algorithm)
