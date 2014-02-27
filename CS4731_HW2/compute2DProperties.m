@@ -1,4 +1,8 @@
 function [db, out_img] = compute2DProperties(gray_img, labeled_img)
+% display the positions and orientations of the objects on gray_img
+fh = figure();
+imshow(gray_img);
+
 % compute properties for each labeled object in the image
 prop_db = [];
 for label = 1:max(labeled_img(:))
@@ -26,31 +30,42 @@ for label = 1:max(labeled_img(:))
     c_mat = bin_img .* (r_mat - cen_r).^2;
     c = sum(c_mat(:));
     
-    % orientation
+    % orientation - in degrees
     theta = atan2(b, a-c) / 2;
-    deg_theta = theta * 180 / pi
-    prop_vec = [prop_vec; deg_theta];
+    deg_theta = theta * 180 / pi;
     
-    % E %%% NEGATIVES???
-    E_min = a*sin(theta).^2 - b*sin(theta)*cos(theta) + c*cos(theta).^2
-    E_max = a*sin(-theta).^2 - b*sin(-theta)*cos(-theta) + c*cos(-theta).^2
+    % E moment of inertia (min and max)
+    E_one = a*sin(theta).^2  - b*sin(theta)*cos(theta)   + c*cos(theta).^2;
+    E_two = a*sin(-theta).^2 - b*sin(-theta)*cos(-theta) + c*cos(-theta).^2;
     
     % roundedness
-    round = E_min/E_max;
-    prop_vec = [prop_vec; round];
+    if E_one < E_two
+        round = E_one/E_two;
+        E_min = E_one;
+    else
+        round = E_two/E_one;
+        E_min = E_one;
+        deg_theta = -deg_theta;
+    end;
+    
+    % update properties
+    prop_vec = [prop_vec; E_min; deg_theta; round];
     
     % add this labels' properties to the database
     prop_db = [prop_db prop_vec];
+    
+    % draw the orientation line from dot on the image (red)
+    len = 50;
+    x_start = cen_c;
+    y_start = cen_r;
+    x_end = x_start + len * cosd(deg_theta);
+    y_end = y_start + len * sind(deg_theta);
+    hold on; line([x_start x_end], [y_start y_end],'LineWidth',2,'Color',[1,0,0]);
 end
 
-% display the positions and orientations of the objects on gray_img
-fh = figure();
-imshow(gray_img);
 % color the center points (red)
 hold on; plot(prop_db(3, :), prop_db(2, :), 'ws', 'MarkerFaceColor', [1,0,0]);
 
-
-
 db = prop_db;
-out_img = gray_img;
+out_img = saveAnnotatedImg(fh);
 end
