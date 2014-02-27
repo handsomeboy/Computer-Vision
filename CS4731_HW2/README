@@ -25,3 +25,5 @@ I decided to use a standard threshold method to find the peaks. Basically I trie
 
 Challenge 2d:
 (algorithm)
+I used the same thresholds as in part 2c. Basically when I'm drawing the lines I check to see if that part of the line is an edge of the image, and if not then I stop. 
+This part doesn't work :/ Sorry about that.

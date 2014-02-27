@@ -166,7 +166,7 @@ end
 function challenge2d()
 
 img_list = {'hough_1', 'hough_2', 'hough_3'};
-%hough_threshold = [?? ?? ??];
+hough_threshold = [150 120 150];
 
 for i = 1:length(img_list)
     orig_img = imread([img_list{i} '.png']);
