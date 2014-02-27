@@ -128,8 +128,8 @@ end
 function challenge2b()
 img_list = {'hough_1', 'hough_2', 'hough_3'};
 % Quantize parameter space
-rho_num_bins = 50;
-theta_num_bins = 36;
+rho_num_bins = 100;
+theta_num_bins = 144;
 
 for i = 1:length(img_list)
     img = imread(['edge_' img_list{i} '.png']);
@@ -146,7 +146,7 @@ end
 function challenge2c()
 
 img_list = {'hough_1', 'hough_2', 'hough_3'};
-%hough_threshold = [?? ?? ??];
+hough_threshold = [150 120 150];
 
 for i = 1:length(img_list)
     orig_img = imread([img_list{i} '.png']);

@@ -17,10 +17,15 @@ for i = 1:size(row,1)
         % x * sin(theta) - y * cos(theta) + rho = 0
         rho = c*sind(t) - r*cosd(t);
         
+        % convert to bin number
         rho_bin = round((rho + rho_max) / rho_step);
         theta_bin = t/t_step;
+        
+        % add one (for zeros)
         rho_bin = rho_bin + 1;
         theta_bin = theta_bin + 1;
+        
+        % increment bin
         accum_array(theta_bin, rho_bin) = 1 + accum_array(theta_bin, rho_bin);
     end
 end
