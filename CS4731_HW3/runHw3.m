@@ -43,7 +43,7 @@ signAcademicHonestyPolicy('Emily Schultz', 'ess2183');
 %%
 function challenge1a()
 % Test homography
-
+warning('off','all');
 orig_img = imread('portrait.png'); 
 warped_img = imread('portrait_transformed.png');
 
@@ -88,8 +88,8 @@ bg_img = im2double(imread('Osaka.png')); %imshow(bg_img);
 portrait_img = im2double(imread('portrait_small.png')); %imshow(portrait_img);
 
 % Estimate homography
-% portrait_pts = [xp1 yp1; xp2 yp2; xp3 yp3; xp4 yp4];
-% bg_pts = [xb1 yb1; xb2 yb2; xb3 yb3; xb4 yb4];
+portrait_pts = [1 1; 327 1; 1 400; 327 400];
+bg_pts = [100 18; 276 71; 84 439; 283 423];
 
 H_3x3 = computeHomography(portrait_pts, bg_pts);
 
@@ -102,7 +102,7 @@ mask = ~mask;
 % Superimpose the image
 result = bg_img .* cat(3, mask, mask, mask) + dest_img;
 %figure, imshow(result);
-imwrite(result, 'Van_Gogh_in_Osaka.png');
+imwrite(result, 'Van_Gogh_in_Osaka.png'); imshow(result);
 
 %%  
 function challenge1c()
