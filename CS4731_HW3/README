@@ -1,0 +1,20 @@
+README
+
+Emily Schultz
+ess2183
+COMS4731: HW3
+
+Fyi:
+
+Sometimes, due to memory issues I think, runHw3('all') causes Matlab to crash. But if you run
+runHw3('honesty')
+runHw3('challenge1a')
+runHw3('challenge1b')
+runHw3('challenge1c')
+runHw3('challenge1d')
+runHw3('challenge1e')
+runHw3('challenge1f')
+it does not have an issue.
+
+challenge1e is a little bit off, but mostly works
+challenge1f produces building_panorama.png from f1.png, f2.png, f3.png, f4.png 

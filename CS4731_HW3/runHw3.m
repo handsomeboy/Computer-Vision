@@ -99,7 +99,11 @@ dest_canvas_width_height = [size(bg_img, 2), size(bg_img, 1)];
 [mask, dest_img] = backwardWarpImg(portrait_img, inv(H_3x3), dest_canvas_width_height);
 % mask should be of the type logical
 mask = ~mask;
+%imshow(mask);
+%imshow(bg_img);
+%imshow(dest_img);
 % Superimpose the image
+
 result = bg_img .* cat(3, mask, mask, mask) + dest_img;
 %figure, imshow(result);
 imwrite(result, 'Van_Gogh_in_Osaka.png'); imshow(result);
@@ -136,11 +140,11 @@ function challenge1d()
 [horse, horse_map, horse_mask] = imread('escher_horsemen.png');
 blended_result = blendImagePair(fish, fish_mask, horse, horse_mask,...
     'blend');
-%figure, imshow(blended_result);
+figure, imshow(blended_result);
 imwrite(blended_result, 'blended_result.png');
 
 overlay_result = blendImagePair(fish, fish_mask, horse, horse_mask, 'overlay');
-%figure, imshow(overlay_result);
+figure, imshow(overlay_result);
 imwrite(overlay_result, 'overlay_result.png');
 
 %%
@@ -153,13 +157,23 @@ imgl = im2single(imread('mountain_left.png'));
 imgr = im2single(imread('mountain_right.png'));
 
 % You are free to change the order of input arguments
-stitched_img = stitchImg(imgc, imgl, imgr);
+stitched_img = stitchImg(imgl, imgc, imgr);
 %figure, imshow(stitched_img);
 imwrite(stitched_img, 'mountain_panorama.png');
 
 %%
 function challenge1f()
 % Your own panorama
+
+% stitch four images
+img1 = im2single(imread('f1.png'));
+img2 = im2single(imread('f2.png'));
+img3 = im2single(imread('f3.png'));
+img4 = im2single(imread('f4.png'));
+
+stitched_img = stitchImg(img1,img2,img3,img4);
+imshow(stitched_img);
+imwrite(stitched_img, 'building_panorama.png');
 
 %--------------------------------------------------------------------------
 % Demo (no submission required)
