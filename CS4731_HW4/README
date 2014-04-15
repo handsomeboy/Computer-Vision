@@ -18,6 +18,9 @@ Assumption:
 We can assume that the direction of the corresponding light source will be in the direction of the normal brightest surface spot because the surface is Lambertian. There are only diffuse peaks in the reflectance maps, so there are no specular components. So the 3D sphere will be brightest closest to the source, which is in the direction of the source (since the sphere is symmetric object), so that normal points in the direction of the source of light.
 
 
+Challenge 1d:
+Although the directions say that the lighting has been arranged so that all visible surface points on an object are lit by at least 3 sources, I found this was not the case (see for example point (321,82)&(325,82) of the vase images. So I decided to ignore points with less than 3 sources.
+
 Challege 2a:
 To loadfocalstack takes about 1.25 seconds. 
 In my tests, to generateIndexMap takes about ~95 seconds to run. I spoke to the TA who said it should take only a few minutes at the max, so this seemed reasonable to me. I added in disp statements so you can see that something is running. 
