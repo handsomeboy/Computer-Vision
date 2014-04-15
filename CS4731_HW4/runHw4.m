@@ -41,7 +41,7 @@ function challenge1a()
 % Compute the properties of the sphere
 
 img = im2double(imread('sphere0.png')); 
-figure, imshow(img);
+%figure, imshow(img);
 [center, radius] = findSphere(img);
 save('sphere_properties', 'center', 'radius');
 
@@ -136,7 +136,7 @@ focal_stack_dir = 'stack';
 % gray_stack is an mxnxk matrix.
 
 % Specify the (half) window size used for focus measure computation
-%half_window_size = ??; 
+half_window_size = 4;
 
 % Generate an index map, here we will only use the gray-scale images
 index_map = generateIndexMap(gray_stack, half_window_size);
