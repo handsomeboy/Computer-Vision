@@ -39,11 +39,10 @@ for i=1:K
         end
     end
 end
-
+disp('Finished computing Laplacian at each point');
 % second find the layer with maximal focus measure for each point
 
 avg_stack = zeros(M,N,K);
-
 % averaging
 % go through each layer of stack
 for i=1:K
@@ -66,5 +65,8 @@ for i=1:K
         end
     end
 end
+disp('Finished average filtering at each point');
+
 % find maximal indices
 [C,index_map] = max(avg_stack, [], 3);
+disp('Completed generateIndexMap');

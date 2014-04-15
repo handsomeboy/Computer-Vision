@@ -5,8 +5,23 @@ COMS 4731: Computer Vision
 HW4: Due 4/15/14
 
 Challenge 1b:
+
+
+
 Formula
 
 Assumption
 
 
+
+Challege 2a:
+To loadfocalstack takes about 1.25 seconds. 
+In my tests, to generateIndexMap takes about ~95 seconds to run. I spoke to the TA who said it should take only a few minutes at the max, so this seemed reasonable to me. I added in disp statements so you can see that something is running. 
+In total, runHw4('challenge2a') takes ~103 seconds, because it takes a little while to imwrite.
+
+The MATLAB commands for directories/folders can differ for Windows/Mac.
+I have a Mac (Unix-based) system (and so is Cunix/Clic) so the use of 
+ls '-1s' works for me. It may be an issue if grading on Windows, so please grade on Clic/Cunix/Mac/another Unix machine. 
+
+I didn't know if we were allowed to use imfilter(since in previous homeworks it was restricted), so I used loops as necessary.
+Also I chose half_window_size to actually be the full window size, just because it was easier. 
