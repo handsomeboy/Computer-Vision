@@ -34,7 +34,7 @@ runTests(varargin, fun_handles);
 function honesty()
 % Type your full name and uni (both in string) to state your agreement 
 % to the Code of Academic Integrity.
-signAcademicHonestyPolicy('Peter Parker', 'pp1917');
+signAcademicHonestyPolicy('Emily Schultz', 'ess2183');
 
 %--------------------------------------------------------------------------
 % Tests for Challenge 1: Optical flow using template matching
@@ -45,9 +45,9 @@ function debug1a()
 img1 = imread('simple1.png');
 img2 = imread('simple2.png');
 
-%search_half_window_size = ?;   % Half size of the search window
-%template_half_window_size = ?; % Half size of the template window
-%grid_MN = [?, ?];              % Number of rows and cols in the grid
+search_half_window_size = 12;   % Half size of the search window
+template_half_window_size = 5; % Half size of the template window
+grid_MN = [15,15];              % Number of rows and cols in the grid
 
 result = computeFlow(img1, img2, search_half_window_size, template_half_window_size, grid_MN);
 imwrite(result, 'simpleresult.png');
@@ -59,9 +59,9 @@ for i = 1:length(img_list)
     img_stack{i} = imread(img_list{i});
 end
 
-%search_half_window_size = ?;   % Half size of the search window
-%template_half_window_size = ?; % Half size of the template window 
-%grid_MN = [?, ?];              % Number of rows and cols in the grid
+search_half_window_size = 3;  % Half size of the search window
+template_half_window_size = 8; % Half size of the template window 
+grid_MN = [10,10];             % Number of rows and cols in the grid
 
 for i = 2:length(img_stack)
     result = computeFlow(img_stack{i-1}, img_stack{i},...

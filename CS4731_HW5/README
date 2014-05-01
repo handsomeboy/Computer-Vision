@@ -1,0 +1,21 @@
+README
+
+Emily Schultz (ess2183)
+COMS 4731: Computer Vision
+
+Homework 5
+Due: 5/1/2014
+
+Debug1a:
+Since the shift from img1 to img2 was about 10 pixels east for each, I chose to make the half window size 12 pixels, so that we would search a little more than 10 pixels in each direction. I chose to have a half template size of 5, since it seemed to give good results. I chose to compute the optical_flow vector every 15 pixels in both directions, again because this gave good results when I tried it.
+
+The result is in simpleresult.png. Notice that this image shows the horizontal velocity vectors, pointing east. It makes sense that along the eastern edge the arrows no longer align, since the point that they would match is off the image from the shift, so they find the next closest point. These have must larger similarity metrics (less similar) than the horizontal vectors.
+
+Challenge1a:
+
+I chose to make my search window of radius 3. It seems small, but it gave the best flow results compared to a bigger value when I tested it. I chose a template of radius 8, a little bigger than the debug, just to make sure it was capturing enough information. These also allowed the program to run fairly quickly. Because these were small, I chose to sample more often, with a grid size of 10.
+
+I think the results make sense. Looking at the image for the pair flow1.png and flow2.png, called result1_2.png, you see that the flow vectors on the car are pointing SE, the direction that the car shifts. Similarly the soda can shifts E and a little S, which the flow vectors show. The pack of cigarettes shifts to the W, so the vectors are (mainly) horizontal and pointing W. The Advil container shifts NE, and the cup shifts (a little) N. Where the optical flow vectors get a little messy is in the black surface space. Because the shift is difficult (practically impossible) to detect on the background, it finds the closest matching pixel in any direction, because they really are all so similar. That's why there are clusters pointing in all sorts of directions there.
+
+Keep in mind that the images are small, and so if you try to enlarge the saved images with the flow vectors on top, it can get blurry quickly. If you want to zoom in on the image, do it while runHw5('challenge1a') is running, because it redraws the quiver vectors when you resize, so you don't get overly pixelated vectors obscuring your image.
+
