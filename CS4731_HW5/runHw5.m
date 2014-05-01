@@ -85,13 +85,12 @@ data_params.genFname = @(x)([sprintf('frame%d.png', x)]);
 % ****** IMPORTANT ******
 % In your submission, replace the call to "chooseTarget" with actual parameters
 % to specify the target of interest
-tracking_params.rect = chooseTarget(data_params);
-% tracking_params.rect = [xmin ymin width height];
+tracking_params.rect = [200,60,25,25];
 
 % Half size of the search window
-% tracking_params.search_half_window_size = ?;
+tracking_params.search_half_window_size = 5;
 % Number of bins in the color histogram
-% tracking_params.bin_n = ?;                    
+tracking_params.bin_n = 50;                    
 
 % Pass the parameters to trackingTester (partial implementation below)
 trackingTester(data_params, tracking_params);
@@ -109,13 +108,12 @@ data_params.genFname = @(x)([sprintf('frame%d.png', x)]);
 % ****** IMPORTANT ******
 % In your submission, replace the call to "chooseTarget" with actual parameters
 % to specify the target of interest
-tracking_params.rect = chooseTarget(data_params);
-% tracking_params.rect = [xmin ymin width height];
+tracking_params.rect = [150 125 55 55];
 
 % Half size of the search window
-% tracking_params.search_half_window_size = ?;
+tracking_params.search_half_window_size = 25;
 % Number of bins in the color histogram
-% tracking_params.bin_n = ?;           
+tracking_params.bin_n = 25;           
 
 % Pass the parameters to trackingTester (partial implementation below)
 trackingTester(data_params, tracking_params);
@@ -133,13 +131,13 @@ data_params.genFname = @(x)([sprintf('frame%d.png', x)]);
 % ****** IMPORTANT ******
 % In your submission, replace the call to "chooseTarget" with actual parameters
 % to specify the target of interest
-tracking_params.rect = chooseTarget(data_params);
-% tracking_params.rect = [xmin ymin width height];
+%tracking_params.rect = chooseTarget(data_params);
+tracking_params.rect = [300 215 40 100];
 
 % Half size of the search window
-% tracking_params.search_half_window_size = ?;
+tracking_params.search_half_window_size = 30;
 % Number of bins in the color histogram
-% tracking_params.bin_n = ?;           
+tracking_params.bin_n = 25;           
 
 % Pass the parameters to trackingTester (partial implementation below)
 trackingTester(data_params, tracking_params);

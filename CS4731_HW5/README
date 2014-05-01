@@ -13,9 +13,22 @@ The result is in simpleresult.png. Notice that this image shows the horizontal v
 
 Challenge1a:
 
-I chose to make my search window of radius 3. It seems small, but it gave the best flow results compared to a bigger value when I tested it. I chose a template of radius 8, a little bigger than the debug, just to make sure it was capturing enough information. These also allowed the program to run fairly quickly. Because these were small, I chose to sample more often, with a grid size of 10.
+I chose to make my search window of radius 3. It seems small, but it gave the best flow results compared to a bigger value when I tested it. I chose a template of radius 8, a little bigger than the debug, just to make sure it was capturing enough information. These also allowed the program to run fairly quickly. Because these were small, I chose to sample more often, with a grid size of 10. I used the sum of absolute differences metric.
 
 I think the results make sense. Looking at the image for the pair flow1.png and flow2.png, called result1_2.png, you see that the flow vectors on the car are pointing SE, the direction that the car shifts. Similarly the soda can shifts E and a little S, which the flow vectors show. The pack of cigarettes shifts to the W, so the vectors are (mainly) horizontal and pointing W. The Advil container shifts NE, and the cup shifts (a little) N. Where the optical flow vectors get a little messy is in the black surface space. Because the shift is difficult (practically impossible) to detect on the background, it finds the closest matching pixel in any direction, because they really are all so similar. That's why there are clusters pointing in all sorts of directions there.
 
 Keep in mind that the images are small, and so if you try to enlarge the saved images with the flow vectors on top, it can get blurry quickly. If you want to zoom in on the image, do it while runHw5('challenge1a') is running, because it redraws the quiver vectors when you resize, so you don't get overly pixelated vectors obscuring your image.
 
+Challenge2a:
+
+Because of how long it can take, especially for a large tracking rectangle, I made the search window size small 5, because it seemed to do worse with a larger window size. I chose a bin size of 25 since I figured this would give the right granularity for ~255 colors. I used the sum of absolute differences metric.
+
+These can take quite a while, since it's doing the histogram comparison for every image in the series of frames. Therefore, I decided to print out the frame its working on, so you can tell that it is working because some output is occurring. (You can also see if images are being saved to the desired folder). There may also be a directory exists warning if you've already created the result directory, but it will not error (I did this because it will error if you don't create the directory and it doesn't exist).
+
+For the walking man, it does fairly well at following his head. It gets a little lost around frame14, but finds its way back by frame20, probably because he turns his head.
+
+Challenge2b:
+I increased the search window size since the ball moves pretty fast (to 25). This does pretty well tracking the ball, although it gets a little distracted by the foot for a couple frames.
+
+Challenge2c:
+This set doesn't work very well... The guy moves pretty fast so I used a larger search window, but it doesn't track him well, since so many people look the same (green uniform)
